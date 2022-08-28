@@ -7,7 +7,6 @@ def recursion(inStart, inEnd, postStart, postEnd):
     print(root, end=" ")
     rootIdx = inorderIdx[root]
     leftSize = rootIdx - inStart
-    rightSize = inEnd - rootIdx
     recursion(inStart, rootIdx-1, postStart, postStart+leftSize-1)
     recursion(rootIdx+1, inEnd, postStart+leftSize, postEnd-1)
     
