@@ -1,15 +1,11 @@
 import sys
-input = sys.stdin.readline
-N = int(input())
-X = []
-for _ in range(N):
-    X.append(int(input()))
-dp = [0] * N
-dp[0] = X[0]
-if N >= 2:
-    dp[1] = X[0] + X[1]
-if N >= 3:
-    dp[2] = max(dp[1], dp[0]+X[2])
-for i in range(3, N):
-    dp[i] = max(max(dp[i-1], dp[i-2]+X[i]), dp[i-3]+X[i-1]+X[i])
-print(dp[N-1])
+input=sys.stdin.readline
+n=int(input())
+l=[]
+for _ in range(n):
+    l.append(list(map(int, input().split())))
+ze=[0]*3
+ze[0],ze[1],ze[2]=l[0][0],l[0][1],l[0][2]
+for i in range(1,n):
+    ze[0], ze[1], ze[2] = l[i][0] + min(ze[1], ze[2]), l[i][1] + min(ze[0], ze[2]), l[i][2] + min(ze[0], ze[1])
+print(min(ze)) 
